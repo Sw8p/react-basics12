@@ -8,7 +8,8 @@ export class App extends Component {
   constructor(props){
     super();
     this.state = {
-      brandName: 'Hello React !'
+      brandName: 'Hello React !',
+      color: 'default'
     }
   }
 
@@ -24,18 +25,30 @@ export class App extends Component {
     })
   }
 
+  handleChangeColor (newColor) {
+    this.setState({
+      color : newColor
+    })
+  }
+
   render () {
+    const { brandName, color } = this.state
     const colorBootstrap = ["primary", "secondary", "success", "danger", "warning", "info", "dark"]
     return (
       <div className="container">
         <RowOffsetXs1>
-          <Header colors={colorBootstrap} brandName={this.state.brandName} />
+          <Header
+            colors={colorBootstrap}
+            brandName={brandName}
+            changeColor={(newColor) => this.handleChangeColor(newColor)}
+          />
         </RowOffsetXs1>
         <RowOffsetXs1>
           <Home
-            brandName={this.state.brandName}
+            brandName={brandName}
             onGreet={this.handleGreet}
             changeBrand={(newName) => this.handleChangebrand(newName)}
+            color={color}
           />
         </RowOffsetXs1>
       </div>

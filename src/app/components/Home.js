@@ -12,12 +12,21 @@ export class Home extends Component {
     this.props.changeBrand(this.state.newBrandName)
   }
 
-  render (){
-    const { brandName, onGreet } = this.props
+  //changeBgColor (color) {
+  //  if(color === "default"){
+  //    return ("")
+  //  }else{
+  //    return ("text-light bg-"+color)
+  //  }
+  //}
 
+  render (){
+    const { brandName, onGreet, color } = this.props
+    //const className = this.changeBgColor(color)
+    const className = color === "default" ? "" : " text-light bg-"+color
     return (
       <div className="jumbotron jumbotron-fluid">
-        <div className="container">
+        <div className={"container"+className}>
           <h1 className="display-4">Home Component in Fluid jumbotron</h1>
           <p className="lead">Click on button's menu for changing color</p>
           <h5>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Button } from './Button'
 
-export const Header = ({ colors, brandName }) => {
+export const Header = ({ colors, brandName, changeColor }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -18,7 +18,11 @@ export const Header = ({ colors, brandName }) => {
               </li>
               {colors.map((color, k) => (
                 <li className="nav-item"  key={k}>
-                  <Button className="nav-link" color={color} />
+                  <Button
+                    className="nav-link"
+                    color={color}
+                    onClickBtn={() => changeColor(color)}
+                   />
                 </li>
               ))}
             </ul>
