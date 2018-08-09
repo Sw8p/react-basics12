@@ -14,7 +14,3 @@ export const RowOffsetXs1 = ({ children }) => {
 RowOffsetXs1.propTypes = {
   children: PropTypes.element
 }
-
-RowOffsetXs1.defaultProps = {
-    children: console.log('something wrong...')
-}

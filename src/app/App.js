@@ -12,6 +12,18 @@ export class App extends Component {
       brandName: 'Hello React !',
       color: 'default'
     }
+
+    console.log("LIFECYCLE : ");
+    console.log("constructor");
+  }
+  componentDidMount () {
+    console.log("componentDidMount");
+  }
+  componentDidUpdate (prevProps, prevState) {
+    console.log("componentDidUpdate : ", prevProps, prevState);
+  }
+  componentWillUnmount () {
+    console.log("componentWillUnmount");
   }
 
   //call parent's func from Event's child
