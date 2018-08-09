@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 
+import { Button } from './Button'
+
 export class Home extends Component {
   constructor(props) {
     super()
     this.state = {
-      newBrandName: 'New Brand Name !'
+      newBrandName: props.brandName
     }
   }
 
   onChangeBrand () {
     this.props.changeBrand(this.state.newBrandName)
+  }
+
+  handleInputChange (ev) {
+    this.setState({
+      newBrandName : ev.target.value
+    })
+  }
+  handleInputFocus (ev) {
+    ev.target.value = ""
   }
 
   //changeBgColor (color) {
@@ -21,22 +32,28 @@ export class Home extends Component {
   //}
 
   render (){
-    const { brandName, onGreet, color } = this.props
+    const { onGreet, color } = this.props
     //const className = this.changeBgColor(color)
     const className = color === "default" ? "" : " text-light bg-"+color
     return (
       <div className="jumbotron jumbotron-fluid">
         <div className={"container"+className}>
           <h1 className="display-4">Home Component in Fluid jumbotron</h1>
-          <p className="lead">Click on button's menu for changing color</p>
+          <p className="lead">Click on menu's button for changing background color</p>
           <h5>
             Alerte from parent component :
-            <button className="btn btn-danger" onClick={onGreet}>Greet</button>
+            <Button value="Greet" color="danger" onClickBtn={onGreet} />
           </h5>
           <hr />
           <h5>
             Passing data from child to his parent :
-            <button className="btn btn-warning" onClick={this.onChangeBrand.bind(this)}>{brandName}</button>
+            <input
+              type="text"
+              value={this.state.newBrandName}
+              onChange={(ev) => this.handleInputChange(ev)}
+              onFocus={this.handleInputFocus}
+            />
+            <Button value="Send !" color="warning" onClickBtn={this.onChangeBrand.bind(this)} />
           </h5>
         </div>
       </div>

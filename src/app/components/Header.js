@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Button } from './Button'
 
@@ -20,6 +21,7 @@ export const Header = ({ colors, brandName, changeColor }) => {
                 <li className="nav-item"  key={k}>
                   <Button
                     className="nav-link"
+                    value={color}
                     color={color}
                     onClickBtn={() => changeColor(color)}
                    />
@@ -30,4 +32,10 @@ export const Header = ({ colors, brandName, changeColor }) => {
       </div>
     </nav>
   )
+}
+
+Header.propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.string),
+  brandName: PropTypes.string,
+  changeColor: PropTypes.func
 }

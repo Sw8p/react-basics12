@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 
 import { RowOffsetXs1 } from './components/RowOffsetXs1'
 import { Header } from './components/Header'
@@ -21,7 +22,7 @@ export class App extends Component {
   //modify parent's state from Event on state's child...& modify prop to other child...
   handleChangebrand (newName) {
     this.setState({
-      brandName : newName
+      brandName : _.upperFirst(newName)
     })
   }
 
